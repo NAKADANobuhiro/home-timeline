@@ -267,7 +267,7 @@ let curPersons  = [];
 let spacePressed = false; // スペースキー押下中：選択年に生存している人物のみ表示
 let focusMode    = false; // フォーカスボタン トグル（持続的に絞り込み表示）
 let curT        = d3.zoomIdentity;
-let sortMode    = 'birth';      // 'birth' | 'category'
+let sortMode    = 'category';      // 'birth' | 'category'
 let groupStarts = new Set();    // row indices that begin a new category group
 let evScrollY   = 0;            // イベントエリアのスクロール量（px）
 let evTotalLanes = 0;           // 現在のイベントレーン総数（drawAxisPanel が設定）
@@ -1808,7 +1808,7 @@ function openHelpModal() {
         <table class="help-table">
           <tr><td>URLハッシュ</td><td><code>index.html#sample_house</code> で家歴を直接指定</td></tr>
           <tr><td>区分フィルター</td><td>サイドバー下部のチェックボックスで絞り込み</td></tr>
-          <tr><td>並び替え</td><td>ツールバーの「取得順 / 区分別」で切り替え</td></tr>
+          <tr><td>並び替え</td><td>ツールバーの「年月順 / 区分別」で切り替え</td></tr>
         </table>
       </div>
     </div>`;
