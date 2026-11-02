@@ -240,12 +240,15 @@ function computeHeaderHeight(ds, chartW) {
   return base + MAX_EV_LANES_VISIBLE * EV_LANE_H;
 }
 
-let currentTheme = localStorage.getItem('tl-theme') || 'light';
+// 初期値はライトモード。保存キーは歴史タイムライン（tl-theme）と分けて、そちらの設定に左右されないようにする
+const THEME_KEY = 'ht-theme';
+let currentTheme = 'light';
+try { currentTheme = localStorage.getItem(THEME_KEY) === 'dark' ? 'dark' : 'light'; } catch (e) {}
 
 function applyTheme(theme) {
   currentTheme = theme;
   document.body.classList.toggle('light', theme === 'light');
-  localStorage.setItem('tl-theme', theme);
+  try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
   const icon  = document.getElementById('theme-icon');
   const label = document.getElementById('theme-label');
   if (icon)  icon.textContent  = theme === 'light' ? '☀️' : '🌙';
